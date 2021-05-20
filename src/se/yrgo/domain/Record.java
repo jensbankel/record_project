@@ -1,14 +1,25 @@
 package se.yrgo.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /*
  * @author Alexander Gabay
  * */
 
-public class Record  implements java.io.Serializable{
+@Entity
+public class Record implements java.io.Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String artist;
 	private String title;
 	private String genre;
 	private String barCode;
+	
+	public Record() {};
 	
 	public Record(String artist, String title, String genre, String barCode) {
 		this.artist = artist;
