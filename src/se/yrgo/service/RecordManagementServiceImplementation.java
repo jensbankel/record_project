@@ -1,37 +1,45 @@
 package se.yrgo.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
+import se.yrgo.dataaccess.RecordDataAccess;
 import se.yrgo.domain.Record;
+
+/**
+ * 
+ * @author Alexander Gabay
+ *
+ */
 
 @Stateless
 public class RecordManagementServiceImplementation implements RecordManagementService {
 
+    @Inject
+    private RecordDataAccess dao;
 
+    @Override
 	public void registerRecord(Record record) {
-		// TODO Auto-generated method stub
+		dao.insert(record);
 
 	}
 
+	@Override
 	public List<Record> getAllRecords() {
-
-		Record rec1 = new Record("Abba", "Collected", "Pop", "0600753337776");
-		Record rec2 = new Record("Charlie Parker", "Bird in LA", "Jazz", "0602507408459");
-		Record rec3 = new Record("Nirvana", "Nevermind", "Rock", "0720642442517");
-		List<Record> records = new ArrayList<Record>();
-		records.add(rec1);
-		records.add(rec2);
-		records.add(rec3);
-		return records;
+		return dao.findAll();
 	}
 
-
+	@Override
 	public List<Record> searchByArtist(String artist) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findByArtist(artist);
 	}
-
+	
+    @Override
+    public List<Record> searchByTitle(String title) {
+        return dao.findByTitle(title);
+    }
 }
