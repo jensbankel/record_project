@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 
 import se.yrgo.domain.Record;
 
 @Stateless
-public class RecordDataAccessImplementation implements RecordDataAccess {
+@Alternative
+public class RecordDataAccessTestingVersion implements RecordDataAccess {
 
     @Override
     public void insert(Record newRecord) {
