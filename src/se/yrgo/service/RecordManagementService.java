@@ -16,6 +16,8 @@ public interface RecordManagementService {
 	public void registerRecord(Record record);
 	public List<Record>getAllRecords ();
 	public List<Record>searchByArtist(String artist);
+	//jmlb
+	public List<Record>searchByTitle(String title);
 
 }
 

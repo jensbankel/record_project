@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/jboss-javaee-all-7.0-1.0.3.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/wildfly-23.0.1.Final/wildfly-23.0.1.Final/bin/client/jboss-client.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
