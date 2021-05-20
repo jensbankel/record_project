@@ -3,6 +3,7 @@
 
 #
 *.classpath
+*.project
 
 # Log file
 *.log
