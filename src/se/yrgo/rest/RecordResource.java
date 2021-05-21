@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 
 import se.yrgo.domain.Record;
 import se.yrgo.service.RecordManagementService;
+import se.yrgo.service.RecordManagementServiceLocal;
 
 /*
  * @author Alexander Gabay
@@ -27,5 +28,5 @@ public class RecordResource {
 		}
 		
 		@Inject
-		private RecordManagementService service;
+		private RecordManagementServiceLocal service;
 }
