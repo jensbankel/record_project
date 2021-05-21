@@ -27,6 +27,16 @@ public class Main {
                 (RecordManagementService)jndi.lookup("RecordManagementServerApplication/"
                         + "RecordManagementServiceImplementation!se.yrgo.service."
                         + "RecordManagementService");
+        
+        Record rec1 = new Record("Abba", "Collected", "Pop", "0600753337776");
+		Record rec2 = new Record("Charlie Parker", "Bird in LA", "Jazz", "0602507408459");
+		Record rec3 = new Record("Nirvana", "Nevermind", "Rock", "0720642442517");
+		
+		
+		//Regitrerar employeeer i databasen!
+		service.registerRecord(rec1);
+		service.registerRecord(rec2);
+		service.registerRecord(rec3);
 
         List<Record> records = service.getAllRecords();
         for (Record r : records) {

@@ -17,7 +17,7 @@ import se.yrgo.domain.Record;
  */
 
 @Stateless
-public class RecordManagementServiceImplementation implements RecordManagementService {
+public class RecordManagementServiceImplementation implements RecordManagementService, RecordManagementServiceLocal {
 
     @Inject
     private RecordDataAccess dao;
