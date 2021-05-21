@@ -6,10 +6,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import se.yrgo.domain.Record;
-import se.yrgo.service.RecordManagementService;
 import se.yrgo.service.RecordManagementServiceLocal;
 
 /*
@@ -21,12 +21,20 @@ import se.yrgo.service.RecordManagementServiceLocal;
 @Path("/records")
 public class RecordResource {
 
-		@GET
-		@Produces("application/JSON")
-		public List<Record> getAllRecords() {
-			return service.getAllRecords();
-		}
-		
-		@Inject
-		private RecordManagementServiceLocal service;
+	@Inject
+	private RecordManagementServiceLocal service;
+
+	@GET
+	@Produces("application/JSON")
+	public List<Record> getAllRecords() {
+		return service.getAllRecords();
+	}
+	
+	@GET
+	@Produces("application/JSON")
+	@Path("{recordNo}")
+	public Record findRecordById(@PathParam("recordNo")int id) {
+		return service.getById(id);
+	}
+
 }

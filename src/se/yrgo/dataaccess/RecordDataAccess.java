@@ -18,5 +18,6 @@ public interface RecordDataAccess {
     public List<Record> findAll();
     public List<Record> findByArtist(String artist);
     public List<Record> findByTitle(String title);
+    public Record findById(int id);
 
 }

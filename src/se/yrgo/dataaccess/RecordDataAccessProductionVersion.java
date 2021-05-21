@@ -52,4 +52,11 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 		return q.getResultList();
 	}
 
+	@Override
+	public Record findById(int id) {
+		Query q = em.createQuery("select record from Record record where record.id = :id");
+		q.setParameter("id", id);
+		return (Record)q.getSingleResult();
+	}
+
 }

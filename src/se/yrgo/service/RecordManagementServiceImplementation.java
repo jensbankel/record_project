@@ -42,4 +42,9 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
     public List<Record> searchByTitle(String title) {
         return dao.findByTitle(title);
     }
+
+	@Override
+	public Record getById(int id) {
+		return dao.findById(id);
+	}
 }

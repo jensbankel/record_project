@@ -19,6 +19,7 @@ public interface RecordManagementServiceLocal {
 	public List<Record>searchByArtist(String artist);
 	//jmlb
 	public List<Record>searchByTitle(String title);
+	public Record getById(int id);
 
 }
 

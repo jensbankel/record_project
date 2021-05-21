@@ -43,5 +43,11 @@ public class RecordDataAccessTestingVersion implements RecordDataAccess {
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public Record findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }
