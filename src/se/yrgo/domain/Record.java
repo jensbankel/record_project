@@ -28,66 +28,47 @@ public class Record implements java.io.Serializable {
 		this.barCode = barCode;
 	}
 	
-	
-	
+	public int getId() {
+        return id;
+    }
 
 	public String getArtist() {
-		return artist;
-	}
+        return artist;
+    }
 
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setArtist(String artist) {
-		this.artist = artist;
-	}
+    public String getGenre() {
+        return genre;
+    }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
+    public String getBarCode() {
+        return barCode;
+    }
 
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-
-
-	public String getGenre() {
-		return genre;
-	}
-
-
-
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
-
-
-
-	public String getBarCode() {
-		return barCode;
-	}
-
-
-
-
-	public void setBarCode(String barCode) {
-		this.barCode = barCode;
-	}
-
-
-
-
-	@Override
+    @Override
 	public String toString() {
 		return "Record [artist=" + artist + ", title=" + title + ", genre=" + genre + ", barCode=" + barCode + "]";
 	}
