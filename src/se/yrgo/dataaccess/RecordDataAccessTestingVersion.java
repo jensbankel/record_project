@@ -49,5 +49,17 @@ public class RecordDataAccessTestingVersion implements RecordDataAccess {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Record> findByGenre(String genre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Record> findByBarCode(String barCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

@@ -54,5 +54,53 @@ public class RecordResource {
 			//Meddelande bör visas
 		}
 	}
+	@GET
+	@Produces("application/JSON")
+	@Path("{recordArtist}")
+	public Response findRecordByArtist(@PathParam("recordArtist")String artist) {
+		try {
+			List<Record> result = service.searchByArtist(artist);
+			return Response.ok(result).build();
+		} catch (RecordsNotFoundException e) {
+			return Response.status(404).build();
+			//Meddelande bör visas
+		}
+	}
+	@GET
+	@Produces("application/JSON")
+	@Path("{recordTitel}")
+	public Response findRecordByTitle(@PathParam("recordTitle")String title) {
+		try {
+			List<Record> result = service.searchByTitle(title);
+			return Response.ok(result).build();
+		} catch (RecordsNotFoundException e) {
+			return Response.status(404).build();
+			//Meddelande bör visas
+		}
+	}
+	@GET
+	@Produces("application/JSON")
+	@Path("{recordGenre}")
+	public Response findRecordByGenre(@PathParam("recordGenre")String genre) {
+		try {
+			List<Record> result = service.searchByGenre(genre);
+			return Response.ok(result).build();
+		} catch (RecordsNotFoundException e) {
+			return Response.status(404).build();
+			//Meddelande bör visas
+		}
+	}
+	@GET
+	@Produces("application/JSON")
+	@Path("{recordBar}")
+	public Response findRecordByBarCode(@PathParam("recordBar")String barCode) {
+		try {
+			List<Record> result = service.searchByBarCode(barCode);
+			return Response.ok(result).build();
+		} catch (RecordsNotFoundException e) {
+			return Response.status(404).build();
+			//Meddelande bör visas
+		}
+	}
 
 }

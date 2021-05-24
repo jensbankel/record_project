@@ -16,8 +16,12 @@ import se.yrgo.domain.Record;
 public interface RecordDataAccess {
     public void insert(Record newRecord);
     public List<Record> findAll();
-    public List<Record> findByArtist(String artist);
-    public List<Record> findByTitle(String title);
+    public List<Record> findByArtist(String artist) throws RecordsNotFoundException;
+    public List<Record> findByTitle(String title) throws RecordsNotFoundException;
     public Record findById(int id) throws RecordsNotFoundException;
+    public List<Record> findByGenre(String genre) throws RecordsNotFoundException;
+	public List<Record> findByBarCode(String barCode) throws RecordsNotFoundException;
+	
+	
 
 }

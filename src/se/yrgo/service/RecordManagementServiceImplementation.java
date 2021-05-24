@@ -25,7 +25,7 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
 
     @Override
 	public void registerRecord(Record record) {
-		dao.insert(record);
+		dao.insert(record); 
 
 	}
 
@@ -35,13 +35,21 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
 	}
 
 	@Override
-	public List<Record> searchByArtist(String artist) {
+	public List<Record> searchByArtist(String artist) throws RecordsNotFoundException {
 		return dao.findByArtist(artist);
 	}
 	
     @Override
-    public List<Record> searchByTitle(String title) {
+    public List<Record> searchByTitle(String title) throws RecordsNotFoundException {
         return dao.findByTitle(title);
+    }
+    @Override
+    public List<Record> searchByGenre(String genre) throws RecordsNotFoundException {
+    	return dao.findByGenre(genre);
+    }
+    @Override
+    public List<Record> searchByBarCode(String barCode) throws RecordsNotFoundException {
+    	return dao.findByBarCode(barCode);
     }
 
 	@Override

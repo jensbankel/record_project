@@ -40,14 +40,14 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 
 
 	@Override
-	public List<Record> findByArtist(String artist) {
+	public List<Record> findByArtist(String artist) throws RecordsNotFoundException{
 		Query q = em.createQuery("select record from Record record where record.artist = :artist");
 		q.setParameter("artist", artist);
 		return q.getResultList();
 	}
 
 	@Override
-	public List<Record> findByTitle(String title) {
+	public List<Record> findByTitle(String title) throws RecordsNotFoundException{
 		Query q = em.createQuery("select record from Record record where record.title = :title");
 		q.setParameter("title", title);
 		return q.getResultList();
@@ -63,6 +63,20 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 		} catch (NoResultException e) {
 			throw new RecordsNotFoundException();
 		}
+	}
+
+	@Override
+	public List<Record> findByGenre(String genre) throws RecordsNotFoundException{
+		Query q = em.createQuery("select record from Record record where record.genre = :genre");
+		q.setParameter("genre", genre);
+		return q.getResultList();
+	}
+
+	@Override
+	public List<Record> findByBarCode(String barCode) throws RecordsNotFoundException{
+		Query q = em.createQuery("select record from Record record where record.barCode = :barCode");
+		q.setParameter("barCode", barCode);
+		return q.getResultList();
 	}
 
 }
