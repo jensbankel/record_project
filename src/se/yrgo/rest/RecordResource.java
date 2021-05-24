@@ -53,50 +53,47 @@ public class RecordResource {
 	@Produces("application/JSON")
 	public Response retrieveData(@QueryParam("artist")String artist, @QueryParam("title")String title, @QueryParam("genre")String genre, @QueryParam("barCode")String barCode) {
 
+		String choice = null;
 		if(artist == null && title == null && genre == null && barCode == null) {
-			List<Record> result = service.getAllRecords();
-			return Response.ok(result).build();
+			choice = "all"; 
+		} else if (artist != null && title == null && genre == null && barCode == null) {
+			choice = "artist";
+		} else if (artist == null && title != null && genre == null && barCode == null) {
+			choice = "title";
+		} else if (artist == null && title == null && genre != null && barCode == null) {
+			choice = "genre";
+		} else if (artist == null && title == null && genre == null && barCode != null) {
+			choice = "barCode";
+		}
+		
+		List<Record> result;
+		try {
 
-		}
-		
-		if(artist != null && title == null && genre == null && barCode == null) {
-			try {
-				List<Record> result = service.searchByArtist(artist);
+			switch(choice) {
+
+			case "all":  
+				result = service.getAllRecords();
 				return Response.ok(result).build();
-			} catch (RecordsNotFoundException e) {
-				return Response.status(404).build();
-			}
-		} 
-		
-		if(artist == null && title != null && genre == null && barCode == null) {
-			try {
-				List<Record> result = service.searchByTitle(title);
+			case "artist":
+				result = service.searchByArtist(artist);
 				return Response.ok(result).build();
-			} catch (RecordsNotFoundException e) {
-				return Response.status(404).build();
-			}
-		}
-		
-		if(artist == null && title == null && genre != null && barCode == null) {
-			try {
-				List<Record> result = service.searchByGenre(genre);
+
+			case "title": 
+				result = service.searchByTitle(title);
 				return Response.ok(result).build();
-			} catch (RecordsNotFoundException e) {
-				return Response.status(404).build();
-				
-			}
-		}
-		
-		if(artist == null && title == null && genre == null && barCode != null) {
-			try {
-				List<Record> result = service.searchByBarCode(barCode);
+			case "genre":
+				result = service.searchByGenre(genre);
 				return Response.ok(result).build();
-			} catch (RecordsNotFoundException e) {
-				return Response.status(404).build();
+			case "barCode":
+				result = service.searchByBarCode(barCode);
+				return Response.ok(result).build();
+			default: return Response.status(400).build();
+
 			}
+
+		} catch (RecordsNotFoundException e) {
+			return Response.status(404).build();
 		}
-		
-		return Response.status(400).build();
 		
 	}
 
