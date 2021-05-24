@@ -37,7 +37,7 @@ public class RecordResource {
 	    return record;
 	}
 	
-	@GET //OK!!
+	@GET 
 	@Produces("application/JSON")
 	@Path("{recordNo}")
 	public Response findRecordById(@PathParam("recordNo")int id) {
@@ -46,7 +46,6 @@ public class RecordResource {
 			return Response.ok(result).build();
 		} catch (RecordsNotFoundException e) {
 			return Response.status(404).build();
-			//Meddelande bör visas
 		}
 	}
 
