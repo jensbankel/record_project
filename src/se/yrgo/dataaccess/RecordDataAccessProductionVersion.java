@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -53,10 +54,15 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 	}
 
 	@Override
-	public Record findById(int id) {
+	public Record findById(int id) throws RecordsNotFoundException {
 		Query q = em.createQuery("select record from Record record where record.id = :id");
 		q.setParameter("id", id);
-		return (Record)q.getSingleResult();
+		
+		try {
+			return (Record)q.getSingleResult();
+		} catch (NoResultException e) {
+			throw new RecordsNotFoundException();
+		}
 	}
 
 }
