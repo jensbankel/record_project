@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import se.yrgo.dataaccess.RecordDataAccess;
+import se.yrgo.dataaccess.RecordsNotFoundException;
 import se.yrgo.domain.Record;
 
 /**
@@ -44,7 +45,7 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
     }
 
 	@Override
-	public Record getById(int id) {
+	public Record getById(int id) throws RecordsNotFoundException {
 		return dao.findById(id);
 	}
 }

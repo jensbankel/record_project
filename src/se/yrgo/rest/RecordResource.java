@@ -10,7 +10,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
+import se.yrgo.dataaccess.RecordsNotFoundException;
 import se.yrgo.domain.Record;
 import se.yrgo.service.RecordManagementServiceLocal;
 
@@ -43,8 +45,14 @@ public class RecordResource {
 	@GET
 	@Produces("application/JSON")
 	@Path("{recordNo}")
-	public Record findRecordById(@PathParam("recordNo")int id) {
-		return service.getById(id);
+	public Response findRecordById(@PathParam("recordNo")int id) {
+		try {
+			Record result = service.getById(id);
+			return Response.ok(result).build();
+		} catch (RecordsNotFoundException e) {
+			return Response.status(404).build();
+			//Meddelande bör visas
+		}
 	}
 
 }
