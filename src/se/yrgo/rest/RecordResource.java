@@ -36,14 +36,8 @@ public class RecordResource {
 	    service.registerRecord(record);
 	    return record;
 	}
-
-	@GET
-	@Produces("application/JSON")
-	public List<Record> getAllRecords() {
-		return service.getAllRecords();
-	}
 	
-	@GET
+	@GET //OK!!
 	@Produces("application/JSON")
 	@Path("{recordNo}")
 	public Response findRecordById(@PathParam("recordNo")int id) {
@@ -55,78 +49,56 @@ public class RecordResource {
 			//Meddelande bör visas
 		}
 	}
-	
+
 	@GET
 	@Produces("application/JSON")
-	public Response retriveData(@QueryParam("artist")String artist, @QueryParam("title")String title) {
+	public Response retrieveData(@QueryParam("artist")String artist, @QueryParam("title")String title, @QueryParam("genre")String genre, @QueryParam("barCode")String barCode) {
+
+		if(artist == null && title == null && genre == null && barCode == null) {
+			List<Record> result = service.getAllRecords();
+			return Response.ok(result).build();
+
+		}
 		
-		if(artist != null) {
+		if(artist != null && title == null && genre == null && barCode == null) {
 			try {
 				List<Record> result = service.searchByArtist(artist);
 				return Response.ok(result).build();
 			} catch (RecordsNotFoundException e) {
 				return Response.status(404).build();
-				//Meddelande bör visas
 			}
-		} else {
+		} 
+		
+		if(artist == null && title != null && genre == null && barCode == null) {
 			try {
 				List<Record> result = service.searchByTitle(title);
 				return Response.ok(result).build();
 			} catch (RecordsNotFoundException e) {
 				return Response.status(404).build();
-				//Meddelande bör visas
 			}
 		}
-	
-	
-	}
-	
-	@GET
-	@Produces("application/JSON")
-	public Response findRecordByArtist(@QueryParam("artist")String artist) {
-		try {
-			List<Record> result = service.searchByArtist(artist);
-			return Response.ok(result).build();
-		} catch (RecordsNotFoundException e) {
-			return Response.status(404).build();
-			//Meddelande bör visas
+		
+		if(artist == null && title == null && genre != null && barCode == null) {
+			try {
+				List<Record> result = service.searchByGenre(genre);
+				return Response.ok(result).build();
+			} catch (RecordsNotFoundException e) {
+				return Response.status(404).build();
+				
+			}
 		}
-	}
-	@GET
-	@Produces("application/JSON")
-	@Path("{recordTitel}")
-	public Response findRecordByTitle(@PathParam("recordTitle")String title) {
-		try {
-			List<Record> result = service.searchByTitle(title);
-			return Response.ok(result).build();
-		} catch (RecordsNotFoundException e) {
-			return Response.status(404).build();
-			//Meddelande bör visas
+		
+		if(artist == null && title == null && genre == null && barCode != null) {
+			try {
+				List<Record> result = service.searchByBarCode(barCode);
+				return Response.ok(result).build();
+			} catch (RecordsNotFoundException e) {
+				return Response.status(404).build();
+			}
 		}
-	}
-	@GET
-	@Produces("application/JSON")
-	@Path("{recordGenre}")
-	public Response findRecordByGenre(@PathParam("recordGenre")String genre) {
-		try {
-			List<Record> result = service.searchByGenre(genre);
-			return Response.ok(result).build();
-		} catch (RecordsNotFoundException e) {
-			return Response.status(404).build();
-			//Meddelande bör visas
-		}
-	}
-	@GET
-	@Produces("application/JSON")
-	@Path("{recordBar}")
-	public Response findRecordByBarCode(@PathParam("recordBar")String barCode) {
-		try {
-			List<Record> result = service.searchByBarCode(barCode);
-			return Response.ok(result).build();
-		} catch (RecordsNotFoundException e) {
-			return Response.status(404).build();
-			//Meddelande bör visas
-		}
+		
+		return Response.status(400).build();
+		
 	}
 
 }
