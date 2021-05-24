@@ -45,7 +45,8 @@ public class RecordResource {
 	
 	@GET
 	@Produces("application/JSON")
-	public Response findRecordById(@QueryParam("recordNo")int id) {
+	@Path("{recordNo}")
+	public Response findRecordById(@PathParam("recordNo")int id) {
 		try {
 			Record result = service.getById(id);
 			return Response.ok(result).build();
@@ -53,6 +54,31 @@ public class RecordResource {
 			return Response.status(404).build();
 			//Meddelande bör visas
 		}
+	}
+	
+	@GET
+	@Produces("application/JSON")
+	public Response retriveData(@QueryParam("artist")String artist, @QueryParam("title")String title) {
+		
+		if(artist != null) {
+			try {
+				List<Record> result = service.searchByArtist(artist);
+				return Response.ok(result).build();
+			} catch (RecordsNotFoundException e) {
+				return Response.status(404).build();
+				//Meddelande bör visas
+			}
+		} else {
+			try {
+				List<Record> result = service.searchByTitle(title);
+				return Response.ok(result).build();
+			} catch (RecordsNotFoundException e) {
+				return Response.status(404).build();
+				//Meddelande bör visas
+			}
+		}
+	
+	
 	}
 	
 	@GET
