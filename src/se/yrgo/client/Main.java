@@ -38,8 +38,6 @@ public class Main {
         Record record8 = new Record("Dropkick Murphys", "Turn up the dial", "Punk", "5400863049126");
         Record record9 = new Record("Nattskiftet", "Stämplar in", "Electronic", " 7393210769311");
         
-        
-        //Regitrerar employeeer i databasen!
         service.registerRecord(record1);
         service.registerRecord(record2);
         service.registerRecord(record3);

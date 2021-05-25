@@ -1,5 +1,10 @@
 package se.yrgo.dataaccess;
 
+/**
+ * @author jmlb
+ * 
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 

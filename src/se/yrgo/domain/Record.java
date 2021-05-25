@@ -70,7 +70,8 @@ public class Record implements java.io.Serializable {
 
     @Override
 	public String toString() {
-		return "Record [artist=" + artist + ", title=" + title + ", genre=" + genre + ", barCode=" + barCode + "]";
+		return "Record [artist=" + artist + ", title=" + title + ", "
+		        + "genre=" + genre + ", barCode=" + barCode + "]";
 	}
 	
 	

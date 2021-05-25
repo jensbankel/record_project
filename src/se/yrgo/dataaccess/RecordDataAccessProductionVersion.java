@@ -41,23 +41,25 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 
 	@Override
 	public List<Record> findByArtist(String artist) throws RecordsNotFoundException{
-		Query q = em.createQuery("select record from Record record where LOWER(record.artist) = LOWER(:artist)");
+		Query q = em.createQuery("select record from Record record "
+		                        + "where LOWER(record.artist) = LOWER(:artist)");
 		q.setParameter("artist", artist);
 		return q.getResultList();
 	}
 
 	@Override
 	public List<Record> findByTitle(String title) throws RecordsNotFoundException{
-		Query q = em.createQuery("select record from Record record where LOWER(record.title) = LOWER(:title)");
+		Query q = em.createQuery("select record from Record record "
+		                        + "where LOWER(record.title) = LOWER(:title)");
 		q.setParameter("title", title);
 		return q.getResultList();
 	}
 
 	@Override
 	public Record findById(int id) throws RecordsNotFoundException {
-		Query q = em.createQuery("select record from Record record where record.id = :id");
+		Query q = em.createQuery("select record from Record record "
+		                        + "where record.id = :id");
 		q.setParameter("id", id);
-		
 		try {
 			return (Record)q.getSingleResult();
 		} catch (NoResultException e) {
@@ -67,14 +69,16 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 
 	@Override
 	public List<Record> findByGenre(String genre) throws RecordsNotFoundException{
-		Query q = em.createQuery("select record from Record record where LOWER(record.genre) = LOWER(:genre)");
+		Query q = em.createQuery("select record from Record record "
+		                        + "where LOWER(record.genre) = LOWER(:genre)");
 		q.setParameter("genre", genre);
 		return q.getResultList();
 	}
 
 	@Override
 	public List<Record> findByBarCode(String barCode) throws RecordsNotFoundException{
-		Query q = em.createQuery("select record from Record record where record.barCode = :barCode");
+		Query q = em.createQuery("select record from Record record "
+		                        + "where record.barCode = :barCode");
 		q.setParameter("barCode", barCode);
 		return q.getResultList();
 	}

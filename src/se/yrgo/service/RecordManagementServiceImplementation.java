@@ -18,7 +18,8 @@ import se.yrgo.domain.Record;
  */
 
 @Stateless
-public class RecordManagementServiceImplementation implements RecordManagementService, RecordManagementServiceLocal {
+public class RecordManagementServiceImplementation 
+    implements RecordManagementService, RecordManagementServiceLocal {
 
     @Inject
     private RecordDataAccess dao;
@@ -35,36 +36,42 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
 	}
 
 	@Override
-	public List<Record> searchByArtist(String artist) throws RecordsNotFoundException {
+	public List<Record> searchByArtist(String artist) 
+	        throws RecordsNotFoundException {
 		return dao.findByArtist(artist);
 	}
 	
     @Override
-    public List<Record> searchByTitle(String title) throws RecordsNotFoundException {
+    public List<Record> searchByTitle(String title) 
+            throws RecordsNotFoundException {
         return dao.findByTitle(title);
     }
     @Override
-    public List<Record> searchByGenre(String genre) throws RecordsNotFoundException {
+    public List<Record> searchByGenre(String genre) 
+            throws RecordsNotFoundException {
     	return dao.findByGenre(genre);
     }
     @Override
-    public List<Record> searchByBarCode(String barCode) throws RecordsNotFoundException {
+    public List<Record> searchByBarCode(String barCode) 
+            throws RecordsNotFoundException {
     	return dao.findByBarCode(barCode);
     }
 
 	@Override
-	public Record getById(int id) throws RecordsNotFoundException {
+	public Record getById(int id) 
+	        throws RecordsNotFoundException {
 		return dao.findById(id);
 	}
 	
 	@Override
-	public void updateRecord(int id, String title, String artist, String genre,
-	        String barCode) throws RecordsNotFoundException {
+	public void updateRecord(int id, String title, String artist, String genre, String barCode) 
+	        throws RecordsNotFoundException {
 	    dao.updateRecord(id, title, artist, genre, barCode);
 	}
 	
     @Override
-	public void deleteRecord(int id) throws RecordsNotFoundException {
+	public void deleteRecord(int id) 
+	        throws RecordsNotFoundException {
 	    dao.deleteRecord(id);
 	}
 }

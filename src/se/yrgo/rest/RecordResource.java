@@ -21,6 +21,7 @@ import se.yrgo.service.RecordManagementServiceLocal;
 
 /*
  * @author Alexander Gabay
+ * 
  * */
 
 
@@ -53,8 +54,10 @@ public class RecordResource {
 
 	@GET
 	@Produces("application/JSON")
-	public Response retrieveData(@QueryParam("artist")String artist, @QueryParam("title")String title, @QueryParam("genre")String genre, @QueryParam("barCode")String barCode) {
-
+	public Response retrieveData(@QueryParam("artist")String artist, 
+	                             @QueryParam("title")String title, 
+	                             @QueryParam("genre")String genre, 
+	                             @QueryParam("barCode")String barCode) {
 		String choice = null;
 		if(artist == null && title == null && genre == null && barCode == null) {
 			choice = "all"; 
@@ -70,7 +73,6 @@ public class RecordResource {
 		
 		List<Record> result;
 		try {
-
 			switch(choice) {
 
 			case "all":  
