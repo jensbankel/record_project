@@ -56,4 +56,16 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
 	public Record getById(int id) throws RecordsNotFoundException {
 		return dao.findById(id);
 	}
+	
+	@Override
+	public void updateRecord(int id, String title, String artist, String genre,
+	        String barCode) throws RecordsNotFoundException {
+	    dao.updateRecord(id, title, artist, genre, barCode);
+	}
+	
+	@Override
+    @Override
+	public void deleteRecord(int id) throws RecordsNotFoundException {
+	    dao.deleteRecord(id);
+	}
 }
