@@ -3,10 +3,12 @@ package se.yrgo.rest;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
+import javax.inject.Inject;import javax.sql.rowset.serial.SerialException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -95,6 +97,30 @@ public class RecordResource {
 			return Response.status(404).build();
 		}
 		
+	}
+	
+	@PUT
+	@Path("{recordNo}")
+	@Produces("application/JSON")
+	@Consumes("application/JSON")
+	public Response updateRecord(@PathParam("recordNo") int id, Record r) {
+	    try {
+            service.updateRecord(id, r.getTitle(), r.getArtist(), r.getGenre(), r.getBarCode());
+            return Response.ok(service.getById(id)).build();
+        } catch (RecordsNotFoundException e) {
+            return Response.status(404).build();
+        }
+	}
+	
+	@DELETE
+	@Path("{recordNo}")
+	public Response deleteRecord(@PathParam("recordNo") int id, Record r) {
+	    try {
+            service.deleteRecord(id);
+            return Response.ok(service.getById(id)).build();
+        } catch (RecordsNotFoundException e) {
+            return Response.status(404).build();
+        }
 	}
 
 }

@@ -21,6 +21,9 @@ public interface RecordManagementService {
 	public List<Record>searchByTitle(String title) throws RecordsNotFoundException;
 	public List<Record>searchByGenre(String genre) throws RecordsNotFoundException;
 	public List<Record>searchByBarCode(String barCode) throws RecordsNotFoundException;
+    public void updateRecord(int id, String title, String artist, String genre, String barCode)
+            throws RecordsNotFoundException;
+    public void deleteRecord(int id) throws RecordsNotFoundException;
 
 }
 
