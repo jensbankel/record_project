@@ -114,10 +114,10 @@ public class RecordResource {
 	
 	@DELETE
 	@Path("{recordNo}")
-	public Response deleteRecord(@PathParam("recordNo") int id, Record r) {
+	public Response deleteRecord(@PathParam("recordNo") int id) {
 	    try {
             service.deleteRecord(id);
-            return Response.ok(service.getById(id)).build();
+            return Response.status(204).build();
         } catch (RecordsNotFoundException e) {
             return Response.status(404).build();
         }
