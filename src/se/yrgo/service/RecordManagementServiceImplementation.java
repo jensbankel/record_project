@@ -63,7 +63,6 @@ public class RecordManagementServiceImplementation implements RecordManagementSe
 	    dao.updateRecord(id, title, artist, genre, barCode);
 	}
 	
-	@Override
     @Override
 	public void deleteRecord(int id) throws RecordsNotFoundException {
 	    dao.deleteRecord(id);

@@ -78,5 +78,21 @@ public class RecordDataAccessProductionVersion implements RecordDataAccess {
 		q.setParameter("barCode", barCode);
 		return q.getResultList();
 	}
+	
+    @Override
+	public void updateRecord(int id, String title, String artist, String genre,
+	        String barCode) throws RecordsNotFoundException {
+        Record record = findById(id);
+        record.setTitle(title);
+        record.setArtist(artist);
+        record.setGenre(genre);
+        record.setBarCode(barCode);
+    }
+    
+    @Override
+    public void deleteRecord(int id) throws RecordsNotFoundException {
+        Record r = findById(id);
+        em.remove(r);
+    }
 
 }
