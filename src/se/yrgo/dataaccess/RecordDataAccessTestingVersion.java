@@ -62,4 +62,12 @@ public class RecordDataAccessTestingVersion implements RecordDataAccess {
 		return null;
 	}
     
+	public void updateRecord(int id, String title, String artist, String genre,
+	            String barCode) throws RecordsNotFoundException {
+	      // Do something?
+	}
+	
+	public void deleteRecord(int id) throws RecordsNotFoundException {
+	    
+	}
 }
