@@ -25,7 +25,6 @@ public class RecordDataAccessTestingVersion implements RecordDataAccess {
 
     @Override
     public void insert(Record newRecord) {
-        // TODO Auto-generated method stub
         
     }
 
@@ -38,44 +37,36 @@ public class RecordDataAccessTestingVersion implements RecordDataAccess {
         records.add(r3);
         records.add(r2);
         records.add(r1);
-        Record r33 = new Record("B45sson", "magiskt", "jazz", "242422");
-        records.add(r33);
         return records;
     }
 
     @Override
     public List<Record> findByArtist(String artist) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public List<Record> findByTitle(String title) {
-        // TODO Auto-generated method stub
         return null;
     }
 
 	@Override
 	public Record findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Record> findByGenre(String genre) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Record> findByBarCode(String barCode) {
-		// TODO Auto-generated method stub
 		return null;
 	}
     
 	public void updateRecord(int id, String title, String artist, String genre,
 	            String barCode) throws RecordsNotFoundException {
-	      // Do something?
 	}
 	
 	public void deleteRecord(int id) throws RecordsNotFoundException {
