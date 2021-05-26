@@ -1,7 +1,13 @@
 package se.yrgo.dataaccess;
 
 /**
- * @author jmlb
+ * 
+ * @author Jens Bankel
+ * @author Naoya Irkikura
+ * @author Alexander Gabay
+ * 
+ * An implementation of the interface RecordDataAccess and its methods 
+ * for testing. Without actually using the database 
  * 
  */
 

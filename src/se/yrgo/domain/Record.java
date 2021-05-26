@@ -5,9 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/*
+/**
+ * 
+ * @author Jens Bankel
+ * @author Naoya Irkikura
  * @author Alexander Gabay
- * */
+ * 
+ * The class represents a record object. 
+ *
+ */
 
 @Entity
 public class Record implements java.io.Serializable {

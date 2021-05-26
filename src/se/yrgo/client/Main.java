@@ -1,5 +1,15 @@
 package se.yrgo.client;
 
+/**
+ * @author Jens Bankel
+ * @author Naoya Irkikura
+ * @author Alexander Gabay
+ * 
+ * A main class to be able to test the system from within the same project. 
+ * Here, also used to populate the database with a few records. 
+ * 
+ */
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -15,6 +25,7 @@ import se.yrgo.service.RecordManagementServiceImplementation;
 public class Main {
 
     public static void main(String[] args) throws NamingException {
+    
         Properties jndiProperties = new Properties();
         jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY, 
                 "org.jboss.naming.remote.client.InitialContextFactory");

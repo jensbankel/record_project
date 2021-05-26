@@ -1,7 +1,14 @@
 package se.yrgo.service;
 
-/*
+/**
+ * 
+ * @author Jens Bankel
+ * @author Naoya Irkikura
  * @author Alexander Gabay
+ * 
+ * Interface defining a blueprint for communicating with classes directly in 
+ * contact with a database
+ * 
  * */
 
 import java.util.List;
@@ -18,7 +25,6 @@ public interface RecordManagementServiceLocal {
 	public void registerRecord(Record record);
 	public List<Record>getAllRecords ();
 	public List<Record>searchByArtist(String artist) throws RecordsNotFoundException;
-	//jmlb
 	public List<Record>searchByTitle(String title) throws RecordsNotFoundException;
 	public List<Record>searchByGenre(String genre) throws RecordsNotFoundException;
 	public List<Record>searchByBarCode(String barCode) throws RecordsNotFoundException;

@@ -8,7 +8,11 @@ import se.yrgo.domain.Record;
 
 /**
  * 
- * @author jmlb
+ * @author Jens Bankel
+ * @author Naoya Irkikura
+ * @author Alexander Gabay
+ * 
+ * Interface to provide a blueprint for talking to the database
  *
  */
 
