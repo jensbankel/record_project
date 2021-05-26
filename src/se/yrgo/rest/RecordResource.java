@@ -3,7 +3,8 @@ package se.yrgo.rest;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;import javax.sql.rowset.serial.SerialException;
+import javax.inject.Inject;
+import javax.sql.rowset.serial.SerialException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,8 +20,13 @@ import se.yrgo.dataaccess.RecordsNotFoundException;
 import se.yrgo.domain.Record;
 import se.yrgo.service.RecordManagementServiceLocal;
 
-/*
+/**
+ * 
+ * @author Jens Bankel
+ * @author Naoya Irkikura
  * @author Alexander Gabay
+ * 
+ * The class provides a layer for communicating with external clients
  * 
  * */
 
@@ -32,6 +38,12 @@ public class RecordResource {
 	@Inject
 	private RecordManagementServiceLocal service;
 	
+	/**
+	 * Takes a record passing it along to be registered in the database
+	 * 
+	 * @param Takes a record object to be registered
+	 * @return Returns the registered record 
+	 */
 	@POST
 	@Produces("application/JSON")
 	@Consumes("application/JSON")
@@ -39,7 +51,12 @@ public class RecordResource {
 	    service.registerRecord(record);
 	    return record;
 	}
-	
+	/**
+	 * Find a record by use of ID
+	 * 
+	 * @param ID to the record to be found
+	 * @return A response object indicating success or failure of query
+	 */
 	@GET 
 	@Produces("application/JSON")
 	@Path("{recordNo}")
@@ -52,6 +69,15 @@ public class RecordResource {
 		}
 	}
 
+	/**
+	 * Search for records by providing a parameter
+	 * 
+	 * @param artist 
+	 * @param title
+	 * @param genre 
+	 * @param barCode
+	 * @return A response object indicating success or failure of query
+	 */
 	@GET
 	@Produces("application/JSON")
 	public Response retrieveData(@QueryParam("artist")String artist, 
@@ -101,6 +127,13 @@ public class RecordResource {
 		
 	}
 	
+	/**
+	 * Updates a record
+	 * 
+	 * @param id for the record to be updated
+	 * @param r object for the record to be updated
+	 * @return A response object indicating success or failure of query
+	 */
 	@PUT
 	@Path("{recordNo}")
 	@Produces("application/JSON")
@@ -114,6 +147,12 @@ public class RecordResource {
         }
 	}
 	
+	/**
+	 * Deletes a record 
+	 * 
+	 * @param id of record to be deleted
+	 * @return A response object indicating success or failure of query
+	 */
 	@DELETE
 	@Path("{recordNo}")
 	public Response deleteRecord(@PathParam("recordNo") int id) {

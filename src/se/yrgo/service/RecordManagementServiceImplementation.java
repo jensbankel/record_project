@@ -13,9 +13,14 @@ import se.yrgo.domain.Record;
 
 /**
  * 
+ * @author Jens Bankel
+ * @author Naoya Irkikura
  * @author Alexander Gabay
- *
- */
+ * 
+ * The class provides a service layer for separating classes communicating with
+ * external clients and classes communicating with the database
+ * 
+ * */
 
 @Stateless
 public class RecordManagementServiceImplementation 
@@ -27,7 +32,6 @@ public class RecordManagementServiceImplementation
     @Override
 	public void registerRecord(Record record) {
 		dao.insert(record); 
-
 	}
 
 	@Override

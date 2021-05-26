@@ -1,9 +1,15 @@
 package se.yrgo.service;
 
-/*
+/**
+ * 
+ * @author Jens Bankel
+ * @author Naoya Irkikura
  * @author Alexander Gabay
+ * 
+ * Interface defining a blueprint for communicating with classes directly in 
+ * contact with external clients
+ * 
  * */
-
 import java.util.List;
 
 import javax.ejb.Remote;
